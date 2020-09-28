@@ -7,7 +7,7 @@
 
     use Ekolo\Routing\Route;
 
-    abstract class RouteRegistrar
+    abstract class RouteRegistar
     {
 		/**
 		 * The routes

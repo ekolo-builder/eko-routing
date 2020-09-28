@@ -5,12 +5,12 @@
      */
     namespace Ekolo\Routing;
 
-    use Ekolo\Routing\RouteRegistrar;
+    use Ekolo\Routing\RouteRegistar;
     
     /**
      * @package The router allows you to do the routing
      */
-    class Router extends RouteRegistrar {
+    class Router extends RouteRegistar {
         
         /**
 		 * Renvoi la route par rapport à l'url passé en paramètre
@@ -62,19 +62,17 @@
          */
         public function registrarRoute(string $method, string $url, $callback)
         {
-            $regexCtrl = '#^([a-zA-Z]{1,})+([a-zA-Z0-9{1,}])?@([a-zA-Z]{1,})+([a-zA-Z0-9{1,}])$#';
             $regexVarUrl = '#:([a-zA-Z]{1,})+([a-zA-Z0-9_\-]{1,})?#';
 
             $urlRegexed = preg_replace($regexVarUrl, '([a-zA-Z0-9_\-]{1,})', $url);
             $urlRegexed .= '/?';
 
-            if (!is_callback($callback)) {
-                throw new Exception('Le paramètre 2 doit être une fonction callback');
+            if (!\is_callable($callback)) {
+                throw new \Exception('Le paramètre 2 doit être une fonction callback');
                 
             }
 
             $action = $callback;
-            $controller = null;
 
             $vars = $this->matchVars($url);
 
