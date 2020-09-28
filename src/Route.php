@@ -24,24 +24,31 @@
         protected $controller;
         
         /**
-         * L'url que le client à demander
+         * The url that the client to request
          * @var string
          */
         public $url;
         
         /**
-         * Les noms des variables contenues dans la route
+         * The names of the variables contained in the route
          * @var array
          */
         protected $varsNames;
         
         /**
-         * Les variables contenues dans la route
+         * The variables contained in the route
          * @var array
          */
 		protected $vars;
 
-		public function __construct($url, $controller, $action, array $varsNames)
+        /**
+         * Construct
+         * @param string $url
+         * @param \Closure $controller
+         * @param string $action
+         * @param array $varsNames
+         */
+		public function __construct(string $url, $controller, $action, array $varsNames)
 		{
 			$this->setUrl($url);
 			$this->setController($controller);
@@ -50,7 +57,7 @@
 		}
 
 		/**
-		 * Vérifie si la route contient des variables
+		 * Check if the route contains variables
 		 * @return bool
 		 */
 		public function hasVars()
@@ -59,8 +66,8 @@
 		}
 
 		/**
-		 * Vérifie si l'url pasé enparamètre correspond à celui de la route
-		 * @param string $url L'url demandé
+		 * Check if the url passed in parameter matches that of the route
+		 * @param string $url
 		 * @return array|bool $matches
 		 */
 		public function match($url)
@@ -79,8 +86,8 @@
 		}
 
 		/**
-		 * Modifie l'action
-		 * @param string|Closure $action L'action à ajouter
+		 * Modify the action
+		 * @param string|Closure
 		 * @return void
 		 */
 		public function setAction($action)
@@ -89,7 +96,7 @@
 		}
 
 		/**
-		 * Modifie l'url de la route
+         * Modify the url of route
 		 * @param string $url
 		 * @return void
 		 */
@@ -99,8 +106,8 @@
 		}
 
 		/**
-		 * Modifie le controller
-		 * @param {string} $controller Le controlleur à ajouter
+		 * Modify the controller
+		 * @param string $controller
 		 * @return void
 		 */
 		public function setController($controller)
@@ -109,8 +116,8 @@
 		}
 
 		/**
-		 * Modifie le nom des variables
-		 * @param array $varsNames Les noms de différentes variables
+         * Modify the names of variables
+		 * @param array $varsNames
 		 * @param void
 		 */
 		public function setVarsNames(array $varsNames)
@@ -119,7 +126,7 @@
 		}
 
 		/**
-		 * Modifie les varaibles
+		 * Modify the values of variables
 		 * @param $vars
 		 */
 		public function setVars($vars)
@@ -128,7 +135,7 @@
 		}
 
 		/**
-		 * Renvoi l'action qu'il faut
+		 * Return the right action
 		 * @return string
 		 */
 		public function action()
@@ -137,7 +144,7 @@
 		}
 
 		/**
-		 * Renvoi le nom du à appeler controller
+		 * Return the name of the controller to call
 		 * @return string $controller
 		 */
 		public function controller()
@@ -146,7 +153,7 @@
 		}
 
 		/**
-		 * Renvoi les différentes variables
+		 * Return the different variables
 		 * @return $vars
 		 */
 		public function vars()
@@ -155,7 +162,7 @@
 		}
 
 		/**
-		 * Renvoi les noms des variables
+		 * Return the names of the variables
 		 * @return array $varsNames
 		 */
 		public function varsNames()
