@@ -18,12 +18,6 @@
         protected $action;
         
         /**
-         * Le controlleur à appler
-         * @var string
-         */
-        protected $controller;
-        
-        /**
          * The url that the client to request
          * @var string
          */
@@ -48,10 +42,9 @@
          * @param string $action
          * @param array $varsNames
          */
-		public function __construct(string $url, $controller, $action, array $varsNames)
+		public function __construct(string $url, $action, array $varsNames)
 		{
 			$this->setUrl($url);
-			$this->setController($controller);
 			$this->setAction($action);
 			$this->setVarsNames($varsNames);
 		}
@@ -106,16 +99,6 @@
 		}
 
 		/**
-		 * Modify the controller
-		 * @param string $controller
-		 * @return void
-		 */
-		public function setController($controller)
-		{
-			$this->controller = $controller;
-		}
-
-		/**
          * Modify the names of variables
 		 * @param array $varsNames
 		 * @param void
@@ -141,15 +124,6 @@
 		public function action()
 		{
 			return $this->action;
-		}
-
-		/**
-		 * Return the name of the controller to call
-		 * @return string $controller
-		 */
-		public function controller()
-		{
-			return $this->controller;
 		}
 
 		/**
